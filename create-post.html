@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Post - DevBlog</title>
+    <meta name="description" content="Write and publish your own blog post on DevBlog.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon_io/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon_io/android-chrome-512x512.png">
+    <link rel="manifest" href="assets/favicon_io/site.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">DevBlog</a>
+                </div>
+                
+                <nav class="main-nav">
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="posts.html" class="active">Posts</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="nav-buttons">
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <a href="contact.html" class="btn btn-primary">Get in Touch</a>
+                    <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="mobile-menu">
+                <ul class="mobile-nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="posts.html">Posts</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <a href="contact.html" class="btn btn-primary mobile-cta">Get in Touch</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Create a Post</h1>
+                <p>Share your knowledge and insights with the DevBlog community.</p>
+            </div>
+        </section>
+
+        <section class="create-post-section">
+            <div class="container">
+                <div class="create-post-container">
+                    <form id="create-post-form" class="create-post-form">
+                        <div class="form-group">
+                            <label for="post-title">Title*</label>
+                            <input type="text" id="post-title" placeholder="Enter a descriptive title" required>
+                            <div id="title-error" class="error-text"></div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="post-author">Author Name*</label>
+                                <input type="text" id="post-author" placeholder="Your name" required>
+                                <div id="author-error" class="error-text"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="post-category">Category*</label>
+                                <select id="post-category" required>
+                                    <option value="">Select a category</option>
+                                    <option value="Web Development">Web Development</option>
+                                    <option value="JavaScript">JavaScript</option>
+                                    <option value="CSS">CSS</option>
+                                    <option value="Design">Design</option>
+                                    <option value="Tools">Tools</option>
+                                    <option value="Backend">Backend</option>
+                                    <option value="Performance">Performance</option>
+                                    <option value="React">React</option>
+                                </select>
+                                <div id="category-error" class="error-text"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="post-tags">Tags (comma separated)*</label>
+                            <input type="text" id="post-tags" placeholder="e.g., javascript, tutorial, beginners" required>
+                            <div id="tags-error" class="error-text"></div>
+                            <div class="tags-preview" id="tags-preview"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="post-image">Featured Image (optional)</label>
+                            <div class="image-upload-container">
+                                <div class="image-upload-preview" id="image-preview">
+                                    <i class="fas fa-image"></i>
+                                    <span>No image selected</span>
+                                </div>
+                                <input type="file" id="post-image" accept="image/*">
+                                <button type="button" class="btn btn-outline" id="select-image-btn">Select Image</button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="post-content">Content*</label>
+                            <div class="editor-toolbar" id="editor-toolbar">
+                                <button type="button" data-command="bold" title="Bold"><i class="fas fa-bold"></i></button>
+                                <button type="button" data-command="italic" title="Italic"><i class="fas fa-italic"></i></button>
+                                <button type="button" data-command="underline" title="Underline"><i class="fas fa-underline"></i></button>
+                                <button type="button" data-command="strikeThrough" title="Strike through"><i class="fas fa-strikethrough"></i></button>
+                                <span class="toolbar-divider"></span>
+                                <button type="button" data-command="h2" title="Heading 2"><i class="fas fa-heading"></i>2</button>
+                                <button type="button" data-command="h3" title="Heading 3"><i class="fas fa-heading"></i>3</button>
+                                <button type="button" data-command="p" title="Paragraph"><i class="fas fa-paragraph"></i></button>
+                                <span class="toolbar-divider"></span>
+                                <button type="button" data-command="insertUnorderedList" title="Bullet list"><i class="fas fa-list-ul"></i></button>
+                                <button type="button" data-command="insertOrderedList" title="Numbered list"><i class="fas fa-list-ol"></i></button>
+                                <span class="toolbar-divider"></span>
+                                <button type="button" data-command="createLink" title="Insert link"><i class="fas fa-link"></i></button>
+                                <button type="button" data-command="insertImage" title="Insert image"><i class="fas fa-image"></i></button>
+                                <button type="button" data-command="code" title="Code block"><i class="fas fa-code"></i></button>
+                                <span class="toolbar-divider"></span>
+                                <button type="button" data-command="justifyLeft" title="Align left"><i class="fas fa-align-left"></i></button>
+                                <button type="button" data-command="justifyCenter" title="Align center"><i class="fas fa-align-center"></i></button>
+                                <button type="button" data-command="justifyRight" title="Align right"><i class="fas fa-align-right"></i></button>
+                            </div>
+                            <div id="editor" class="editor-content" contenteditable="true"></div>
+                            <textarea id="post-content" class="hidden" required></textarea>
+                            <div id="content-error" class="error-text"></div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline" id="preview-btn">Preview</button>
+                            <button type="submit" class="btn btn-primary" id="publish-btn">Publish Post</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Post Preview Modal -->
+        <div id="preview-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Post Preview</h2>
+                    <button class="modal-close" id="close-preview">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="post-preview" class="post-preview"></div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline" id="edit-post-btn">Continue Editing</button>
+                    <button class="btn btn-primary" id="confirm-publish-btn">Publish Post</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>DevBlog</h3>
+                    <p>A blog for web developers with tutorials, articles, and resources.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Navigation</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="posts.html">Posts</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="posts.html?category=web-development">Web Development</a></li>
+                        <li><a href="posts.html?category=javascript">JavaScript</a></li>
+                        <li><a href="posts.html?category=design">Design</a></li>
+                        <li><a href="posts.html?category=tools">Tools & Resources</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://x.com/_eugeniuss" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+                        <li><a href="https://github.com/CodeWithEugene" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                        <li><a href="https://www.linkedin.com/in/eugene-mutembei-476248243/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> DevBlog. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/create-post.js"></script>
+</body>
+</html>
